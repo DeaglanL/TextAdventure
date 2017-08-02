@@ -11,8 +11,40 @@ public class GameController {
     private StringTest sT = new StringTest();
     private char playerEvent;
 
+
+    public void findTreasure()
+    {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+
+
+        System.out.println("As you walk the fog seems to disperse around you...");
+        System.out.println("in front of you a door seems to apparate into existence in front of you...");
+        System.out.println("you walk towards it, its presence seeming to invite you to enter it...");
+        System.out.println("As you walk through a warm, white light envelops you and a smell that seems familiar to you fills your nostrils");
+
+        /*System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+*/
+        System.out.println("You awake at home in bed, the nightmare is over.");
+
+        gameFinished = true;
+
+    }
+
     public void game()
     {
+        map.populateMap();
         //playerSet up
         System.out.println("Please enter your name");
         pc = new Player(sc.nextLine(),20,5,4,4);
@@ -84,6 +116,9 @@ public class GameController {
                         System.out.println("You move north");
                         pc.setPosX(pc.getPosX() - 1 );
                         break;
+
+                        default:
+                            break;
                 }
 
                 //and check player location
@@ -95,6 +130,7 @@ public class GameController {
                     switch (playerEvent) {
                         case 't':
                             //find the treasure game ends
+                            findTreasure();
                             break;
 
                         case 'm':
