@@ -1,7 +1,7 @@
 package textadventure;
 
 public class Map {
-    char[][] map = new char[10][10];
+    private char[][] map = new char[10][10];
 
     public  void populateMap()
     {
@@ -46,9 +46,9 @@ public class Map {
         }
     }
 
-    public  void checkPos(int x, int y)
+    public char checkPos(int x, int y)
     {
-
+        return map[x][y];
     }
 
 }

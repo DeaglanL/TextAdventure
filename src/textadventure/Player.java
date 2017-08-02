@@ -1,40 +1,34 @@
 package textadventure;
 
 public class Player {
-    String name;
-    int health;
-    int attack;
-    int movement;
-    int posX;
-    int posY;
+    private String name;
+    private int health;
+    private int attack;
+    private int posX;
+    private int posY;
 
-    public Player(String name, int health, int attack, int movement, int posX, int posY)
+    public Player(String name, int health, int attack, int posX, int posY)
     {
         this.name = name;
         this.health = health;
         this.attack = attack;
-        this.movement = movement;
         this.posX = posX;
         this.posY = posY;
     }
 
-    public void getName(String name)
+    public String getName()
     {
-        this.name = name;
+        return name;
     }
 
-    public void getHealth(int health)
+    public void setHealth(int health)
     {
         this.health = health;
     }
 
-    public void getAttack(int attack)
+    public void setAttack(int attack)
     {
         this.attack = attack;
     }
 
-    public void getMovement(int movement)
-    {
-        this.movement = movement;
-    }
 }
