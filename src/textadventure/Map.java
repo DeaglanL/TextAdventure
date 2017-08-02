@@ -1,13 +1,13 @@
 package textadventure;
 
 public class Map {
-    char[][] map = new char[5][5];
+    char[][] map = new char[10][10];
 
     public  void populateMap()
     {
-        for (int i =0; i < map.length; i++)
+        for(int j = map.length - 1; j >= 0; j--)
         {
-            for(int j = 0; j < map.length; j++)
+            for(int i = 0; i < map.length; i++)
             {
                 map[i][j] = 'x';
             }
@@ -16,11 +16,11 @@ public class Map {
 
     public  void printMap()
     {
-        for (int i =0; i < map.length; i++)
+        for(int j = map.length - 1; j >= 0; j--)
         {
-            for(int j = 0; j < map.length; j++)
+            for(int i = 0; i < map.length; i++)
             {
-                System.out.print(map[i][j]);
+                System.out.print(map[i][j] + " ");
             }
             System.out.println();
         }
@@ -29,9 +29,9 @@ public class Map {
 
     public  void printMapCord()
     {
-        for (int i =0; i < map.length; i++)
+        for(int j = map.length - 1; j >= 0; j--)
         {
-            for(int j = 0; j < map.length; j++)
+            for(int i = 0; i < map.length; i++)
             {
                 if (i<=10)
                 {
@@ -44,6 +44,11 @@ public class Map {
             }
             System.out.println();
         }
+    }
+
+    public  void checkPos(int x, int y)
+    {
+
     }
 
 }
