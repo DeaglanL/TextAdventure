@@ -9,7 +9,15 @@ public class Map {
         {
             for(int i = 0; i < map.length; i++)
             {
-                map[i][j] = 'x';
+                if(i == 5 && j == 5) //replace this with random gen and add another for monster spawns
+                {
+                    map[i][j] = 't';
+                }
+                else
+                {
+                    map[i][j] = 'x';
+                }
+
             }
         }
     }
@@ -50,5 +58,7 @@ public class Map {
     {
         return map[x][y];
     }
+
+    public int getMapLength(){return map.length;}
 
 }

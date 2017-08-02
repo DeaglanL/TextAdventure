@@ -49,18 +49,38 @@ public class GameController {
                 switch (sT.getLastGivenMovment())
                 {
                     case 'n':
+                        if ((pc.getPosY()+1)>(map.getMapLength()-1))
+                        {
+                            System.out.println("You cant go that way");
+                            break;
+                        }
                         System.out.println("You move north");
                         pc.setPosY(pc.getPosY() + 1 );
                         break;
                     case 'e':
+                        if ((pc.getPosX()+1)>(map.getMapLength()-1))
+                        {
+                            System.out.println("You cant go that way");
+                            break;
+                        }
                         System.out.println("You move east");
                         pc.setPosX(pc.getPosX() + 1 );
                         break;
                     case 's':
+                        if ((pc.getPosY()-1)>(map.getMapLength()-1))
+                        {
+                            System.out.println("You cant go that way");
+                            break;
+                        }
                         System.out.println("You move south");
                         pc.setPosY(pc.getPosY() - 1 );
                         break;
                     case 'w':
+                        if ((pc.getPosX()-1)>(map.getMapLength()-1))
+                        {
+                            System.out.println("You cant go that way");
+                            break;
+                        }
                         System.out.println("You move north");
                         pc.setPosX(pc.getPosX() - 1 );
                         break;
@@ -72,6 +92,25 @@ public class GameController {
                 if (playerEvent != 'x')
                 {
                     //do a switch to check the even then do call event method
+                    switch (playerEvent) {
+                        case 't':
+                            //find the treasure game ends
+                            break;
+
+                        case 'm':
+                            //find a monster combat or attempt sneak
+                            break;
+
+                        case 'i':
+                            //find a item, stats increased
+                            break;
+
+                        case 'c': //c for cartography because i used m already
+                            //find a map, gain ability to look at map
+                                break;
+                        default:
+                            break;
+                    }
                 }
 
             }
