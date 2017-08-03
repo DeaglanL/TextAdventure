@@ -32,8 +32,6 @@ public class StringTest {
         {
             return true;
         }
-
-
         return false;
     }
 
@@ -62,7 +60,6 @@ public class StringTest {
             return true;
         }
 
-
         return false;
     }
 
@@ -71,6 +68,11 @@ public class StringTest {
         clean();
 
         if (input.contains("watch"))
+        {
+            return true;
+        }
+
+        if (input.contains("compass"))
         {
             return true;
         }

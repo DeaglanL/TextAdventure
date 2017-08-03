@@ -42,6 +42,12 @@ public class GameController {
 
     }
 
+    public  void compass()
+    {
+
+
+    }
+
     public void game()
     {
         map.populateMap();
@@ -73,6 +79,11 @@ public class GameController {
                 System.out.println("Try \"north\",\"south\",\"east\",or \"west\"");
                 System.out.println("You notice a small watch-like device in your left hand. ");
                 System.out.println("It has hands like a watch, but the hands don't seem to tell time.");
+            }
+
+            if(sT.isWatch())
+            {
+                compass();
             }
 
             //if move , move and check player location
