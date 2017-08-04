@@ -9,7 +9,7 @@ public class Runner {
             Map debugMap = new Map();
             debugMap.populateMap();
             System.out.println(debugMap.getMapLength());
-            debugMap.printMap();
+            System.out.print(debugMap);
             debugMap.printMapCord();
         }
 
