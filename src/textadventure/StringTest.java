@@ -26,13 +26,7 @@ public class StringTest {
     public boolean isLook()
     {
         clean();
-
-
-        if (input.contains("look"))
-        {
-            return true;
-        }
-        return false;
+        return input.contains("look");
     }
 
     public boolean isMovement()
