@@ -42,10 +42,11 @@ public class GameController {
 
     }
 
-    public  void compass()
+    public  int compass()
     {
-
-
+        int tX = Character.getNumericValue(map.getTreasureLocation().charAt(0));
+        int tY = Character.getNumericValue(map.getTreasureLocation().charAt(1));
+        return  (int)Math.sqrt(Math.pow((pc.getPosX() - tY),2) + Math.pow((pc.getPosY() - tY),2));
     }
 
     public void game()
@@ -83,7 +84,7 @@ public class GameController {
 
             if(sT.isWatch())
             {
-                compass();
+                System.out.println("Your watch displays the number " + compass());
             }
 
             //if move , move and check player location

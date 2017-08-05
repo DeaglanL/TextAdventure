@@ -66,11 +66,7 @@ public class StringTest {
             return true;
         }
 
-        if (input.contains("compass"))
-        {
-            return true;
-        }
+        return input.contains("compass");
 
-        return false;
     }
 }
