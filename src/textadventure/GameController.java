@@ -13,7 +13,7 @@ public class GameController {
     private char playerEvent;
     private ArrayList<Monster> monsterLibary = new ArrayList<Monster>();
     private int monsterIndex;
-
+    private boolean hasMap;
 
     public void findTreasure()
     {
@@ -85,6 +85,7 @@ public class GameController {
         return  (int)Math.sqrt(Math.pow((pc.getPosX() - tX),2) + Math.pow((pc.getPosY() - tY),2));
     }
 
+
     public void game()
     {
         map.populateMap();
@@ -117,21 +118,18 @@ public class GameController {
                 System.out.println("Try \"north\",\"south\",\"east\",or \"west\"");
                 System.out.println("You notice a small watch-like device in your left hand. ");
                 System.out.println("It has hands like a watch, but the hands don't seem to tell time.");
-            }
-
-            if(sT.isWatch())
+            } else if (sT.isWatch())
             {
                 System.out.println("Your watch displays the number " + compass());
+            } else if (sT.isMap() && hasMap) {
+                System.out.println("You look at your map");
+                map.printMap();
             }
-
             //if move , move and check player location
-            if (sT.isMovement())
+            else if (sT.isMovement())
             {
-                Movement();
-
+                movement();
                 //and check player location
-
-
                 eventManager();
 
             }
@@ -165,6 +163,11 @@ public class GameController {
 
                 case 'c': //c for cartography because i used m already
                     //find a map, gain ability to look at map
+                    System.out.println("On the ground in front of you, you see a map");
+                    System.out.println("You look at it the roll it up and put it in your pocket");
+                    hasMap = true;
+                    map.printMap();
+                    map.setPosState('x', pc.getPosX(), pc.getPosY());
                         break;
                 default:
                     break;
@@ -172,7 +175,7 @@ public class GameController {
         }
     }
 
-    private void Movement() {
+    private void movement() {
         switch (sT.getLastGivenMovment())
         {
             case 'n':
@@ -208,7 +211,7 @@ public class GameController {
                     System.out.println("You cant go that way");
                     break;
                 }
-                System.out.println("You move north");
+                System.out.println("You move west");
                 pc.setPosX(pc.getPosX() - 1 );
                 break;
 

@@ -69,4 +69,11 @@ public class StringTest {
         return input.contains("compass");
 
     }
+
+    public boolean isMap() {
+        clean();
+
+        return input.contains("map");
+    }
+
 }

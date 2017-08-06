@@ -18,7 +18,8 @@ public class Map {
         int monsterY = mRand.nextInt(map.length);
         int tX = mRand.nextInt(map.length);
         int tY =  mRand.nextInt(map.length);
-
+        int mX = mRand.nextInt(map.length);
+        int mY = mRand.nextInt(map.length);
         for(int j = map.length - 1; j >= 0; j--)
         {
             for(int i = 0; i < map.length; i++)
@@ -27,18 +28,18 @@ public class Map {
                 {
                     map[i][j] = 't';
                     treasureLocation =  convertToCord(i,j);
-                }
-                else if ((i == monsterX && j == monsterY && monsterCount > 0) )
+                } else if (i == mX && j == mY) //replace this with random gen and add another for monster spawns
                 {
+                    map[i][j] = 'c';
+
+                } else if ((i == monsterX && j == monsterY && monsterCount > 0) ) {
                     map[i][j] = 'm';
 
                     //gen next spawn
                     monsterX = mRand.nextInt((map.length - i) + i);
                     monsterY = mRand.nextInt((map.length - j) + j);
                     monsterCount--;
-                }
-                else
-                {
+                } else {
                     map[i][j] = 'x';
                 }
 
@@ -90,6 +91,10 @@ public class Map {
     public char checkPos(int x, int y)
     {
         return map[x][y];
+    }
+
+    public void setPosState(char state, int x, int y) {
+        map[x][y] = state;
     }
 
     public int getMapLength(){return map.length;}
