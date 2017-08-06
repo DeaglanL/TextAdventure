@@ -31,6 +31,14 @@ public class Player {
         this.attack = attack;
     }
 
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
     public void setPosX(int posX) {
         this.posX = posX;
     }

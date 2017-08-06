@@ -12,6 +12,7 @@ public class GameController {
     private StringTest sT = new StringTest();
     private char playerEvent;
     private ArrayList<Monster> monsterLibary = new ArrayList<Monster>();
+    private int monsterIndex;
 
 
     public void findTreasure()
@@ -51,6 +52,30 @@ public class GameController {
         monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
         monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
         monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
+        monsterIndex = monsterLibary.size();
+    }
+
+    public void combat()
+    {
+        Monster curMonster = monsterLibary.get(monsterIndex);
+        System.out.println("As you walk you are suddenly attacked by a horrifying " + curMonster.getName());
+
+        while (curMonster.getHealth() > 0)
+        {
+            System.out.print("it hits you for " + curMonster.getAttack());
+            pc.setHealth(pc.getHealth() - curMonster.getAttack());
+            System.out.println("You hit the monster for" + pc.getAttack());
+            curMonster.setHealth(curMonster.getHealth() - pc.getAttack());
+
+            if (pc.getHealth() < 0)
+            {
+                gameFinished = true;
+
+                System.out.println("You have died");
+            }
+        }
+
+        monsterIndex--;
     }
 
     public  int compass()
@@ -63,6 +88,7 @@ public class GameController {
     public void game()
     {
         map.populateMap();
+        populateMonsterList();
         //playerSet up
         System.out.println("Please enter your name");
         pc = new Player(sc.nextLine(),20,5,4,4);
@@ -101,76 +127,12 @@ public class GameController {
             //if move , move and check player location
             if (sT.isMovement())
             {
-                switch (sT.getLastGivenMovment())
-                {
-                    case 'n':
-                        if ((pc.getPosY()+1)>(map.getMapLength()-1))
-                        {
-                            System.out.println("You cant go that way");
-                            break;
-                        }
-                        System.out.println("You move north");
-                        pc.setPosY(pc.getPosY() + 1 );
-                        break;
-                    case 'e':
-                        if ((pc.getPosX()+1)>(map.getMapLength()-1))
-                        {
-                            System.out.println("You cant go that way");
-                            break;
-                        }
-                        System.out.println("You move east");
-                        pc.setPosX(pc.getPosX() + 1 );
-                        break;
-                    case 's':
-                        if ((pc.getPosY()-1)>(map.getMapLength()-1))
-                        {
-                            System.out.println("You cant go that way");
-                            break;
-                        }
-                        System.out.println("You move south");
-                        pc.setPosY(pc.getPosY() - 1 );
-                        break;
-                    case 'w':
-                        if ((pc.getPosX()-1)>(map.getMapLength()-1))
-                        {
-                            System.out.println("You cant go that way");
-                            break;
-                        }
-                        System.out.println("You move north");
-                        pc.setPosX(pc.getPosX() - 1 );
-                        break;
-
-                        default:
-                            break;
-                }
+                Movement();
 
                 //and check player location
-               playerEvent = map.checkPos(pc.getPosX(), pc.getPosY());
 
-                if (playerEvent != 'x')
-                {
-                    //do a switch to check the even then do call event method
-                    switch (playerEvent) {
-                        case 't':
-                            //find the treasure game ends
-                            findTreasure();
-                            break;
 
-                        case 'm':
-                            //find a monster combat or attempt sneak
-                            break;
-
-                        case 'i':
-                            //find a item, stats increased
-                            break;
-
-                        case 'c': //c for cartography because i used m already
-                            //find a map, gain ability to look at map
-                                break;
-                        default:
-                            break;
-                    }
-                }
+                eventManager();
 
             }
 
@@ -179,5 +141,79 @@ public class GameController {
 
         }
 
+    }
+
+    private void eventManager() {
+        playerEvent = map.checkPos(pc.getPosX(), pc.getPosY());
+
+        if (playerEvent != 'x')
+        {
+            //do a switch to check the even then do call event method
+            switch (playerEvent) {
+                case 't':
+                    //find the treasure game ends
+                    findTreasure();
+                    break;
+
+                case 'm':
+                    combat();
+                    break;
+
+                case 'i':
+                    //find a item, stats increased
+                    break;
+
+                case 'c': //c for cartography because i used m already
+                    //find a map, gain ability to look at map
+                        break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void Movement() {
+        switch (sT.getLastGivenMovment())
+        {
+            case 'n':
+                if ((pc.getPosY()+1)>(map.getMapLength()-1))
+                {
+                    System.out.println("You cant go that way");
+                    break;
+                }
+                System.out.println("You move north");
+                pc.setPosY(pc.getPosY() + 1 );
+                break;
+            case 'e':
+                if ((pc.getPosX()+1)>(map.getMapLength()-1))
+                {
+                    System.out.println("You cant go that way");
+                    break;
+                }
+                System.out.println("You move east");
+                pc.setPosX(pc.getPosX() + 1 );
+                break;
+            case 's':
+                if ((pc.getPosY()-1)>(map.getMapLength()-1))
+                {
+                    System.out.println("You cant go that way");
+                    break;
+                }
+                System.out.println("You move south");
+                pc.setPosY(pc.getPosY() - 1 );
+                break;
+            case 'w':
+                if ((pc.getPosX()-1)>(map.getMapLength()-1))
+                {
+                    System.out.println("You cant go that way");
+                    break;
+                }
+                System.out.println("You move north");
+                pc.setPosX(pc.getPosX() - 1 );
+                break;
+
+                default:
+                    break;
+        }
     }
 }

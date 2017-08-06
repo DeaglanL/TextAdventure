@@ -6,10 +6,6 @@ public class Map {
     private char[][] map = new char[10][10];
     private String treasureLocation;
     private int monsterCount = 5; //have this set in constructor
-    private int tX;
-    private int tY;
-    private int monsterX;
-    private int monsterY;
 
     public String getTreasureLocation() {
         return treasureLocation;
@@ -17,10 +13,11 @@ public class Map {
 
     public  void populateMap()
     {
-        monsterX = mRand.nextInt(map.length); //set initial monster spawns
-        monsterY = mRand.nextInt(map.length);
-        tX = mRand.nextInt(map.length);
-        tY =  mRand.nextInt(map.length);
+
+        int monsterX = mRand.nextInt(map.length); //set initial monster spawns
+        int monsterY = mRand.nextInt(map.length);
+        int tX = mRand.nextInt(map.length);
+        int tY =  mRand.nextInt(map.length);
 
         for(int j = map.length - 1; j >= 0; j--)
         {
