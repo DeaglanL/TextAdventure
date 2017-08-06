@@ -2,7 +2,6 @@ package textadventure;
 import java.util.Random;
 
 public class Map {
-    Random mRand = new Random();
     private char[][] map = new char[10][10];
     private String treasureLocation;
     private int monsterCount = 5; //have this set in constructor
@@ -14,6 +13,7 @@ public class Map {
     public  void populateMap()
     {
 
+        Random mRand = new Random();
         int monsterX = mRand.nextInt(map.length); //set initial monster spawns
         int monsterY = mRand.nextInt(map.length);
         int tX = mRand.nextInt(map.length);
@@ -101,17 +101,18 @@ public class Map {
 
     @Override
     public String toString() {
-        String mapPrint = "";
+        StringBuilder sb = new StringBuilder();
 
         for(int j = map.length - 1; j >= 0; j--)
         {
             for(int i = 0; i < map.length; i++)
             {
-                mapPrint += (map[i][j] + " ");
+                sb.append(map[i][j]);
+                sb.append(" ");
             }
-            mapPrint += "\n";
+            sb.append("\n");
         }
 
-        return mapPrint;
+        return sb.toString();
     }
 }

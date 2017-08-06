@@ -9,7 +9,6 @@ public class GameController {
     private Player pc;
     private boolean gameFinished;
     private StringTest sT = new StringTest();
-    private char playerEvent;
     private ArrayList<Monster> monsterLibrary = new ArrayList<>();
     private int monsterIndex;
     private boolean hasMap;
@@ -141,7 +140,7 @@ public class GameController {
     }
 
     private void eventManager() {
-        playerEvent = map.checkPos(pc.getPosX(), pc.getPosY());
+        char playerEvent = map.checkPos(pc.getPosX(), pc.getPosY());
 
         if (playerEvent != 'x')
         {
