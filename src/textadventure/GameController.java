@@ -1,5 +1,6 @@
 package textadventure;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameController {
@@ -10,6 +11,7 @@ public class GameController {
     private String playerInput;
     private StringTest sT = new StringTest();
     private char playerEvent;
+    private ArrayList<Monster> monsterLibary = new ArrayList<Monster>();
 
 
     public void findTreasure()
@@ -42,11 +44,20 @@ public class GameController {
 
     }
 
+    public void populateMonsterList()
+    {
+        monsterLibary.add(new Monster("Goblin", 2,2 ,0,0)); //currently not setting position will change if we add movement
+        monsterLibary.add(new Monster("Goblin", 2,2 ,0,0));
+        monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
+        monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
+        monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
+    }
+
     public  int compass()
     {
         int tX = Character.getNumericValue(map.getTreasureLocation().charAt(0));
         int tY = Character.getNumericValue(map.getTreasureLocation().charAt(1));
-        return  (int)Math.sqrt(Math.pow((pc.getPosX() - tY),2) + Math.pow((pc.getPosY() - tY),2));
+        return  (int)Math.sqrt(Math.pow((pc.getPosX() - tX),2) + Math.pow((pc.getPosY() - tY),2));
     }
 
     public void game()

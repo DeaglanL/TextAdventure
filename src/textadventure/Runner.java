@@ -11,6 +11,7 @@ public class Runner {
             System.out.println(debugMap.getMapLength());
             System.out.print(debugMap);
             debugMap.printMapCord();
+            System.out.println(debugMap.getTreasureLocation());
         }
 
 
