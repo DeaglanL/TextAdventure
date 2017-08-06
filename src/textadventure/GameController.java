@@ -11,7 +11,7 @@ public class GameController {
     private String playerInput;
     private StringTest sT = new StringTest();
     private char playerEvent;
-    private ArrayList<Monster> monsterLibary = new ArrayList<Monster>();
+    private ArrayList<Monster> monsterLibrary = new ArrayList<>();
     private int monsterIndex;
     private boolean hasMap;
 
@@ -47,17 +47,17 @@ public class GameController {
 
     public void populateMonsterList()
     {
-        monsterLibary.add(new Monster("Goblin", 2,2 ,0,0)); //currently not setting position will change if we add movement
-        monsterLibary.add(new Monster("Goblin", 2,2 ,0,0));
-        monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
-        monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
-        monsterLibary.add(new Monster("Orc", 5,3 ,0,0));
-        monsterIndex = monsterLibary.size();
+        monsterLibrary.add(new Monster("Goblin", 2, 2, 0, 0)); //currently not setting position will change if we add movement
+        monsterLibrary.add(new Monster("Goblin", 2, 2, 0, 0));
+        monsterLibrary.add(new Monster("Orc", 5, 3, 0, 0));
+        monsterLibrary.add(new Monster("Orc", 5, 3, 0, 0));
+        monsterLibrary.add(new Monster("Orc", 5, 3, 0, 0));
+        monsterIndex = monsterLibrary.size();
     }
 
     public void combat()
     {
-        Monster curMonster = monsterLibary.get(monsterIndex);
+        Monster curMonster = monsterLibrary.get(monsterIndex);
         System.out.println("As you walk you are suddenly attacked by a horrifying " + curMonster.getName());
 
         while (curMonster.getHealth() > 0)
