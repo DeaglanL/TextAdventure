@@ -8,7 +8,6 @@ public class GameController {
     private Map map = new Map();
     private Player pc;
     private boolean gameFinished;
-    private String playerInput;
     private StringTest sT = new StringTest();
     private char playerEvent;
     private ArrayList<Monster> monsterLibrary = new ArrayList<>();
